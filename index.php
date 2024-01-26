@@ -51,35 +51,37 @@
     <title>Hotels</title>
 </head>
 <body>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Parking</th>
-                            <th>Vote</th>
-                            <th>Distance to center</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach($hotels as $hotel) { ?>
+    <?php include __DIR__.'/header.php' ?>
+    <main class="my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <table class="table table-striped">
+                        <thead>
                             <tr>
-                                <td><?php echo $hotel['name'] ?></td>
-                                <td><?php echo $hotel['description'] ?></td>
-                                <td><?php echo $hotel['parking'] ? 'Yes' : 'No' ?></td>
-                                <td><?php echo $hotel['vote'] ?></td>
-                                <td><?php echo $hotel['distance_to_center'] ?></td>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Parking</th>
+                                <th>Vote</th>
+                                <th>Distance to center</th>
                             </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php foreach($hotels as $hotel) { ?>
+                                <tr>
+                                    <td><?php echo $hotel['name'] ?></td>
+                                    <td><?php echo $hotel['description'] ?></td>
+                                    <td><?php echo $hotel['parking'] ? 'Yes' : 'No' ?></td>
+                                    <td><?php echo $hotel['vote'] ?></td>
+                                    <td><?php echo $hotel['distance_to_center'] ?></td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 
 </body>
 </html>
