@@ -40,6 +40,21 @@
 
     ];
 
+    $fltHotels = $hotels;
+
+    if(isset($_GET['parking']) && $_GET['parking'] != ''){
+        $parking = $_GET['parking'];
+        $fltParking = [];
+
+        foreach($fltHotels as $hotel){
+            if($hotel['parking'] == $parking){
+                $fltParking [] = $hotel;
+            }
+        }
+
+        $fltHotels = $fltParking;     
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -54,6 +69,20 @@
     <?php include __DIR__.'/header.php' ?>
     <main class="my-5">
         <div class="container">
+            <form action="" method="get">
+                <div class="row my-4">
+                    <div class="col-auto">
+                        <select name="parking" id="parking" class="form-select">
+                            <option value="">Parking: Yes / No</option>
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-warning">Go</button>
+                    </div>
+                </div>
+            </form>
             <div class="row">
                 <div class="col-12">
                     <table class="table table-striped">
@@ -67,7 +96,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($hotels as $hotel) { ?>
+                            <?php foreach($fltHotels as $hotel) { ?>
                                 <tr>
                                     <td><?php echo $hotel['name'] ?></td>
                                     <td><?php echo $hotel['description'] ?></td>
